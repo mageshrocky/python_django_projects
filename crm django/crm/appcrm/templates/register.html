@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body bgcolor='lightgreen'>
+ {% csrf_token %}
+<center>
+    <h1>CustomerInformation</h1>
+</center>
+<table bgcolor="pink" border="5" width="100%">
+    <thead>
+        <th> Id </th>
+        <th> Customer_name </th>
+        <th> Mobile_number </th>
+        <th> Product_ordered </th>
+        <th> Order_date </th>
+        <th> Delivery_date </th>
+        <th> Actions </th>
+
+     </thead>
+    {% for i in CustomerInfo %}
+    <tr>
+        <td> {{i.id}}</td>
+        <td> {{i.name}}</td>
+        <td> {{i.mobile}}</td>
+        <td> {{i.product_name}}</td>
+        <td> {{i.order_date}}</td>
+        <td> {{i.delivery_date}}</td>
+        <td>
+             <a href="{% url 'update' i.id %}">update</a>
+             <a href="{% url 'delete' i.id %}">delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    <br>
+    <br>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends "accounts/main.html" %}
+
+{% block content %}
+
+
+    <hr>
+    <h2>DASHBOARD</h2>
+    <br>
+    TOTAL CUSTOMERS: {{total_customers}}<br><br>
+    TOTAL ORDERS: {{total_orders}}<br><br>
+    PENDING ORDERS: {{pending}}<br><br>
+    <h5>CUSTOMERS</h5><br>
+    <a href="#">Create Customer</a>
+    <table bgcolor="lightblue" border="3" width="30%">
+        <thead>
+            <th>Info</th>
+            <th>Customer</th>
+            <th>Mobile</th>
+        </thead>
+        {% for i in customers %}
+            <tr>
+                <td><a href="{% url 'customer' i.id %}">view</a> </td>
+                <td>{{i.name}}</td>
+                <td>{{i.mobile}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h5>RECENT ORDERS</h5><br>
+    <a href="{% url 'create_order' %}">Place New Order</a>
+    <table bgcolor="lightblue" border="3" width="40%" >
+        <thead>
+            <th>Cus_Name</th>
+            <th>Product</th>
+            <th>Date Ordered</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </thead>
+        {% for i in orders %}
+            <tr>
+                <td>{{i.customer}}</td>
+                <td>{{i.product}}</td>
+                <td>{{i.date_created}}</td>
+                <td>{{i.status}}</td>
+                <td><a href="{% url 'update_order' i.id %}">Update</a> </td>
+                <td><a href="{% url 'delete_order' i.id %}">Remove</a> </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock content %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<center>
+<form action="" method="post">
+    {% csrf_token %}
+        {% for i in Customer %}
+
+    Customer name: <input type="text" value={{i.name}}>
+    <br><br>
+    mobile       : <input type="text" value={{i.mobile}}>
+    <br><br>
+    product      : <input type="text" value={{i.product_name}}>
+    <br><br>
+    order_date   : <input type="text" value={{i.order_date}}>
+    <br><br>
+    delivery_date: <input type="text" value={{i.delivery_date}}>
+    {% endfor %}
+    <br><br>
+    <input type="submit" value="update">
+    <input type="reset" value="cancel">
+</form>
+</center>
+</body>
+</html>

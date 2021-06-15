@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<center>
+<form action="" method="post">
+    {% csrf_token %}
+        name : {{info.name}}<br>
+        mobile: {{info.mobile}}<br>
+        product: {{info.product_name}}<br>
+        order : {{info.order_date}}<br>
+        delivery: {{info.delivery_date}}<br>
+    <br><br>
+    <input type="submit" value="update">
+    <input type="reset" value="cancel">
+</form>
+</center>
+</body>
+</html>

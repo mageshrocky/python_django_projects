@@ -1,0 +1,58 @@
+{% extends "accounts/main.html" %}
+
+{% block content %}
+
+    <h2>CUSTOMER CONTACT INFO</h2>
+    <table bgcolor="lightblue" border="3" width="50%">
+        <thead>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Date_Created</th>
+            <th>Update</th>
+            <th>order</th>
+        </thead>
+        {% for i in cust %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.mobile}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.date_created}}</td>
+                <td><a href="#">update</a> </td>
+                <td><a href="{% url 'create_order' %}">Place order</a></td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    <h2>CUSTOMER ORDER INFO</h2>
+    <table bgcolor="lightblue" border="3" width="50%">
+        <thead>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Date_Created</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </thead>
+        {% for i in orders %}
+            <tr>
+                <td>{{i.product}}</td>
+                <td>{{i.product.category}}</td>
+                <td>{{i.date_created}}</td>
+                <td>{{i.status}}</td>
+                <td><a href="{% url 'update_order' i.id %}">Update</a> </td>
+                <td><a href="{% url 'delete_order' i.id %}">Remove</a> </td>
+            </tr>
+        {% endfor%}
+    </table>
+    <br><br>
+    <form method="get" action="">
+        {% csrf_token %}
+        {{myfilter.form}}
+
+        <button type="submit">search</button>
+    </form>
+
+
+
+{% endblock content %}

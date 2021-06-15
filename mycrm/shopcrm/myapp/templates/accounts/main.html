@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM</title>
+</head>
+<body>
+    {% if request.user.is_staff %}
+    <a href="{% url 'home' %}">Dashboard</a>
+    <a href="{% url 'product' %}">Products</a>
+    {% else %}
+    <a href="{% url 'settings'%}">settings</a>
+    {% endif %}
+    <span>Hello, {{request.user}}</span>
+    <span><a href="{% url 'logout' %}">LogOut</a> </span>
+    <hr>
+    {% block content %}
+
+    {% endblock %}
+
+
+</body>
+</html>
